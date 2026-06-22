@@ -1,0 +1,125 @@
+﻿<div class="dashboard">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">📊</div>
+      <div class="stat-content">
+        <h3>Total Rows</h3>
+        <p class="stat-value">{{ csvData.stats.totalRows }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">📋</div>
+      <div class="stat-content">
+        <h3>Columns</h3>
+        <p class="stat-value">{{ csvData.stats.totalColumns }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">⚠️</div>
+      <div class="stat-content">
+        <h3>Missing Data</h3>
+        <p class="stat-value">{{ (Object.values(csvData.stats.missingValues).reduce((a, b) => a + b, 0)) }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">✅</div>
+      <div class="stat-content">
+        <h3>Complete Rows</h3>
+        <p class="stat-value">
+          {{ csvData.rows.filter(row => Object.values(row).every(v => v !== null && v !== '')).length }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-section">
+    <div class="chart-header">
+      <h2>📈 Data Visualization</h2>
+      <div class="chart-controls">
+        <select [(ngModel)]="selectedColumn" (change)="updateChart()" class="column-select">
+          <option *ngFor="let col of csvData.headers" [value]="col">{{ col }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="chart-container" *ngIf="chartData">
+      <canvas
+        baseChart
+        type="bar"
+        [data]="chartData"
+        [options]="chartOptions"
+      ></canvas>
+    </div>
+  </div>
+
+  <div class="column-stats-section">
+    <h2>📊 Column Statistics</h2>
+    <div class="column-stats-grid">
+      <div *ngFor="let header of csvData.headers" class="column-stat-card">
+        <h4>{{ header }}</h4>
+        <div class="stat-detail">
+          <span class="label">Type:</span>
+          <span class="value">{{ csvData.stats.dataTypes[header] }}</span>
+        </div>
+        <div class="stat-detail">
+          <span class="label">Unique:</span>
+          <span class="value">{{ csvData.stats.columnStats[header].unique }}</span>
+        </div>
+        <div class="stat-detail">
+          <span class="label">Missing:</span>
+          <span class="value">{{ csvData.stats.missingValues[header] }} ({{ getMissingPercentage(header) }}%)</span>
+        </div>
+        <div *ngIf="csvData.stats.dataTypes[header] === 'number'" class="stat-detail">
+          <span class="label">Min:</span>
+          <span class="value">{{ csvData.stats.columnStats[header].min?.toFixed(2) }}</span>
+        </div>
+        <div *ngIf="csvData.stats.dataTypes[header] === 'number'" class="stat-detail">
+          <span class="label">Max:</span>
+          <span class="value">{{ csvData.stats.columnStats[header].max?.toFixed(2) }}</span>
+        </div>
+        <div *ngIf="csvData.stats.dataTypes[header] === 'number'" class="stat-detail">
+          <span class="label">Avg:</span>
+          <span class="value">{{ csvData.stats.columnStats[header].average?.toFixed(2) }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="search-section">
+    <h2>🔍 Search & Filter</h2>
+    <div class="search-controls">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (keyup)="onSearch()"
+        placeholder="Search in data..."
+        class="search-input"
+      />
+      <button (click)="resetSearch()" class="btn-reset">Reset</button>
+      <button (click)="downloadCSV()" class="btn-download">📥 Download CSV</button>
+    </div>
+  </div>
+
+  <div class="table-section">
+    <h2>📋 Data Preview ({{ filteredRows.length }} results)</h2>
+    <div class="table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th *ngFor="let header of csvData.headers">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of filteredRows">
+            <td *ngFor="let header of csvData.headers">
+              {{ row[header] !== null && row[header] !== '' ? row[header] : '—' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

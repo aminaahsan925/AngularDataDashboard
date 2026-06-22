@@ -1,0 +1,29 @@
+﻿<div class="upload-container">
+  <div
+    class="upload-box"
+    [class.drag-over]="isDragOver"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+  >
+    <div class="upload-icon">📁</div>
+    <h2>Upload Your CSV File</h2>
+    <p class="subtitle">Drag and drop or click to select</p>
+    
+    <label class="file-input-label">
+      <input
+        type="file"
+        accept=".csv"
+        (change)="onFileInput($event)"
+        class="file-input"
+      />
+      <span class="btn-choose">Choose File</span>
+    </label>
+
+    <p class="info-text">
+      📊 Supported format: CSV (.csv)<br>
+      ⚡ Works instantly in your browser<br>
+      🔒 Your data never leaves your computer
+    </p>
+  </div>
+</div>

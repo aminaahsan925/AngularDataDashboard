@@ -1,0 +1,80 @@
+﻿<div class="app-container" [class.light-mode]="!isDarkMode">
+  <!-- Header with Theme Toggle -->
+  <div class="header">
+    <div class="header-content">
+      <div class="header-top">
+        <h1>📊 DataWhisper</h1>
+        <button class="theme-toggle" (click)="toggleTheme()" [title]="isDarkMode ? 'Light Mode' : 'Dark Mode'">
+          {{ isDarkMode ? '☀️' : '🌙' }}
+        </button>
+      </div>
+      <p class="header-subtitle">Professional Data Analysis Tool • Upload • Analyze • Export</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-container">
+    <!-- Error Message -->
+    <div *ngIf="error" class="error-message">
+      ❌ {{ error }}
+      <button (click)="error = ''" class="close-btn">✕</button>
+    </div>
+
+    <!-- Upload or Dashboard -->
+    <div *ngIf="!csvData; else dashboardView" class="upload-section">
+      <!-- Loading Spinner -->
+      <div *ngIf="loading" class="loading-section">
+        <div class="loading-spinner"></div>
+        <p>Analyzing {{ fileName }}...</p>
+      </div>
+
+      <!-- Features Section (only show when not loading) -->
+      <ng-container *ngIf="!loading">
+        <app-upload (fileSelected)="onFileSelected($event)"></app-upload>
+
+        <!-- Features Grid -->
+        <div class="features-section">
+          <h2>✨ Powerful Features</h2>
+          <div class="features-grid">
+            <div *ngFor="let feature of features" class="feature-card">
+              <div class="feature-icon">{{ feature.icon }}</div>
+              <h3>{{ feature.title }}</h3>
+              <p>{{ feature.desc }}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Dashboard Template -->
+    <ng-template #dashboardView>
+      <div class="dashboard-wrapper">
+        <div class="file-info-bar">
+          <div class="file-info">
+            <span class="file-name">📄 {{ fileName }}</span>
+            <span class="file-stats">
+              {{ csvData!.stats.totalRows }} rows • {{ csvData!.stats.totalColumns }} columns
+            </span>
+          </div>
+          <button (click)="resetData()" class="btn-reset">⬅️ Upload New File</button>
+        </div>
+
+        <app-dashboard [csvData]="csvData!"></app-dashboard>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Professional Footer -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-main">
+        <h3>DataWhisper Analytics</h3>
+        <p>Professional data analysis tool for everyone</p>
+      </div>
+      <div class="footer-credit">
+        <p>✨ Built by <strong>Amina Ahsan</strong></p>
+        <p class="footer-year">© 2026 • All Rights Reserved</p>
+      </div>
+    </div>
+  </div>
+</div>
