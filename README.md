@@ -2,7 +2,7 @@
 
 Professional CSV data analysis tool built with Angular 22. Upload any CSV file and get instant insights with beautiful visualizations
 
-**🔗 Live Demo:** https://yourusername.github.io/AngularDataDashboard/
+**🔗 Live Demo:** https://aminaahsan925.github.io/AngularDataDashboard/
 ---
 
 ## ✨ Features
@@ -66,7 +66,7 @@ npx ng build --configuration production
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/AngularDataDashboard.git
+git clone https://github.com/aminaahsan925/AngularDataDashboard.git
 
 # Navigate to project
 cd AngularDataDashboard
