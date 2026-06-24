@@ -194,7 +194,7 @@ MIT License - Free to use and modify
 
 **Amina Ahsan**
 - GitHub: [@aminaahsan925](https://github.com/aminaahsan925)
-- Email: your.email@gmail.com
+- Email:  aminaahsan5678@gmail.com
 - Location: Lahore, Pakistan
 
 ---
