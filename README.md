@@ -1,59 +1,218 @@
-# AngularDataDashboard
+# 📊 DataWhisper Analytics Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.3.
+Professional CSV data analysis tool built with Angular 22. Upload any CSV file and get instant insights with beautiful visualizations.
 
-## Development server
+**🔗 Live Demo:** https://yourusername.github.io/AngularDataDashboard/
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## ✨ Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **📤 Drag & Drop Upload** - Upload CSV files instantly
+- **📊 Auto Statistics** - Get rows, columns, data types automatically
+- **📈 Interactive Charts** - Beautiful bar charts for visualization
+- **🔍 Search & Filter** - Search across all data instantly
+- **📥 Export Results** - Download analyzed data as CSV
+- **🎨 Dark/Light Mode** - Choose your preferred theme
+- **⚡ Lightning Fast** - Works 100% in browser, no server needed
+- **📱 Responsive** - Works on desktop, tablet, mobile
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🛠️ Tech Stack
 
-```bash
-ng generate component component-name
-```
+- **Frontend:** Angular 22
+- **Charts:** Chart.js + ng2-charts
+- **CSV Parsing:** PapaParse
+- **Styling:** CSS3 (Dark/Light themes)
+- **Deployment:** GitHub Pages
+- **Language:** TypeScript
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🚀 Quick Start
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Local Development
 
 ```bash
-ng test
+# Install dependencies
+npm install
+
+# Start development server
+npx ng serve
+
+# Open browser
+http://localhost:4200
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### Build for Production
 
 ```bash
-ng e2e
+npx ng build --configuration production
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## 📖 How to Use
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. **Upload CSV** - Drag and drop or click to select
+2. **View Statistics** - See rows, columns, data types
+3. **Analyze Data** - Switch between columns to view different charts
+4. **Search Data** - Use search box to filter rows
+5. **Export** - Click download button to get CSV results
+
+---
+
+## 📦 Installation
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/AngularDataDashboard.git
+
+# Navigate to project
+cd AngularDataDashboard
+
+# Install dependencies
+npm install
+
+# Install additional packages
+npm install chart.js ng2-charts papaparse
+npm install --save-dev @types/papaparse
+
+# Start server
+npx ng serve
+```
+
+---
+
+## 🎨 Features Explained
+
+### Data Statistics
+Automatically calculates:
+- Total rows and columns
+- Missing values count
+- Data type detection (number, text, date)
+- Unique values per column
+- Min, Max, Average for numbers
+
+### Interactive Charts
+- Bar charts showing top values
+- Customizable by selecting any column
+- Dark/Light mode compatible
+- Real-time updates
+
+### Search & Filter
+- Full-text search across all data
+- Instant results
+- Works on all columns
+- Reset functionality
+
+### Export
+- Download analyzed results as CSV
+- Preserves formatting
+- Ready for further analysis
+
+---
+
+## 🔧 Configuration
+
+### Theme Settings
+Stored in `localStorage` — automatically saves your preference
+
+### Chart Options
+Configured in `dashboard.component.ts`:
+- Chart type: Bar (can be extended to Pie, Line)
+- Colors: Purple/Cyan gradient theme
+- Responsive sizing
+
+---
+
+## 📊 File Structure
+src/
+
+├── app/
+
+│   ├── components/
+
+│   │   ├── upload/          # File upload component
+
+│   │   └── dashboard/       # Statistics & charts
+
+│   ├── services/
+
+│   │   └── csv.service.ts   # CSV parsing & analysis
+
+│   ├── app.ts               # Main component
+
+│   ├── app.html             # Main template
+
+│   └── app.css              # Global styles
+
+└── main.ts
+---
+
+## 🎯 Use Cases
+
+- **Students:** Learn data analysis
+- **Businesses:** Quick data insights
+- **Analysts:** CSV data exploration
+- **Freelancers:** Client deliverables
+- **Researchers:** Data visualization
+
+---
+
+## 🚀 Deployment
+
+Deployed on **GitHub Pages** — automatically updates when you push to `main` branch.
+
+To deploy:
+```bash
+npx ng build --configuration production --base-href="/AngularDataDashboard/"
+npx ngh --dir=dist/angular-data-dashboard/browser
+```
+
+---
+
+## 💡 Future Features
+
+- [ ] Multi-file analysis
+- [ ] Advanced statistical analysis
+- [ ] PDF export
+- [ ] Real-time collaboration
+- [ ] AI insights with Claude API
+- [ ] Database integration
+
+---
+
+## 📄 License
+
+MIT License - Free to use and modify
+
+---
+
+## 👨‍💻 Author
+
+**Amina Ahsan**
+- GitHub: [@aminaahsan925](https://github.com/aminaahsan925)
+- Email: your.email@gmail.com
+- Location: Lahore, Pakistan
+
+---
+
+## 🙏 Acknowledgments
+
+- Angular team for the amazing framework
+- Chart.js for visualization
+- PapaParse for CSV handling
+- Community for feedback
+
+---
+
+## 📞 Contact & Feedback
+
+Found a bug? Have a suggestion?
+Open an issue on GitHub or reach out directly!
+
+---
+
+**⭐ If you find this useful, please star the repository!**
