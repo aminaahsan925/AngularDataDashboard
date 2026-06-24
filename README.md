@@ -1,8 +1,6 @@
 # 📊 DataWhisper Analytics Dashboard
 
-Professional CSV data analysis tool built with Angular 22. Upload any CSV file and get instant insights with beautiful visualizations.
-
-**🔗 Live Demo:** https://aminaahsan925.github.io/AngularDataDashboard/
+Professional CSV data analysis tool built with Angular 22. Upload any CSV file and get instant insights with beautiful visualizations
 
 ---
 
